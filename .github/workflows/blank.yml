@@ -50,9 +50,23 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Desplegar Lambdas con Zappa
+     # Despliegue con Zappa del módulo scraper
+      - name: Deploy scraper with Zappa
         run: |
-          pip install zappa boto3
-          zappa update devInfo --settings_file punto1/zappa_settings.json
-          zappa update dev_csv --settings_file punto2/zappa_settings.json
-          zappa update crawler --settings_file punto3/zappa_settings.json
+          source env/bin/activate
+          cd punto1
+          zappa update devInfo
+
+      - name: deploy parser Zappa status
+        run: |
+          source env/bin/activate
+          cd punto
+          zappa status dev_csv
+
+      # Despliegue con Zappa del módulo parser
+      - name: Deploy parser with Zappa
+        run: |
+          source env/bin/activate
+          cd punto3
+          zappa update crawler
+
