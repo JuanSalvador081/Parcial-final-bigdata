@@ -63,7 +63,10 @@ jobs:
         pip install zappa boto3
         
         # Desplegar Lambda de Scraping
-        zappa update dev --settings_file Scrapper/zappa_settings.json
+        zappa update dev --settings_file punto1/zappa_settings.json
         
         # Desplegar Lambda de Procesamiento
-        zappa update dev --settings_file Parser/zappa_settings.json
+        zappa update dev --settings_file punto2/zappa_settings.json
+
+        # Desplegar Lambda de Procesamiento
+        zappa update dev --settings_file punto3/zappa_settings.json
