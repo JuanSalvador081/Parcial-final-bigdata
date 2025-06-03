@@ -42,6 +42,11 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Instalar Zappa y boto3
+        run: |
+          python -m pip install --upgrade pip
+          pip install zappa boto3
+
       - name: Verificar credenciales AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -50,23 +55,17 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-     # Despliegue con Zappa del módulo scraper
       - name: Deploy scraper with Zappa
         run: |
-          source env/bin/activate
           cd punto1
           zappa update devInfo
 
-      - name: deploy parser Zappa status
+      - name: Zappa status for parser
         run: |
-          source env/bin/activate
-          cd punto
+          cd punto2
           zappa status dev_csv
 
-      # Despliegue con Zappa del módulo parser
-      - name: Deploy parser with Zappa
+      - name: Deploy crawler with Zappa
         run: |
-          source env/bin/activate
           cd punto3
           zappa update crawler
-
