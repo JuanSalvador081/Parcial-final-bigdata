@@ -8,7 +8,7 @@ import os
 
 # --- Configuración S3 ---
 # ¡IMPORTANTE! Reemplaza "tu-nombre-de-bucket-s3-para-headlines" con el nombre REAL de tu bucket S3.
-S3_BUCKET_NAME = "parcial3luis" # ¡Mantén tu nombre de bucket real aquí!
+S3_BUCKET_NAME = "parcialfinal-juansalvador" # ¡Mantén tu nombre de bucket real aquí!
 S3_RAW_PREFIX = "headlines/raw"
 S3_FINAL_PREFIX = "headlines/final"
 

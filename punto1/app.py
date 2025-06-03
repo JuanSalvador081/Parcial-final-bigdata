@@ -3,7 +3,7 @@ import boto3
 from datetime import datetime
 
 # --- Configuración S3 ---
-S3_BUCKET_NAME = "parcial3luis" # ¡CAMBIA ESTO por tu bucket real!
+S3_BUCKET_NAME = "parcialfinal-juansalvador" # ¡CAMBIA ESTO por tu bucket real!
 S3_PREFIX = "headlines/raw" # Prefijo para la estructura de carpetas en S3
 
 
