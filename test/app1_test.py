@@ -1,6 +1,7 @@
-import pytest
+# F401: 'pytest' imported but unused - REMOVED
 from unittest.mock import patch, MagicMock
 from punto1 import app
+
 
 # Test 1: Verifica que se sube correctamente a S3
 @patch("punto1.app.boto3.client")
@@ -10,9 +11,10 @@ def test_upload_to_s3_success(mock_boto_client):
     mock_s3.put_object.return_value = {}
 
     result = app.upload_to_s3("contenido de prueba", "ruta/archivo.html")
-    
+
     mock_s3.put_object.assert_called_once()
-    assert result == True
+    assert result is True
+
 
 # Test 2: Verifica que se descarga correctamente una página
 @patch("punto1.app.requests.get")
@@ -28,4 +30,4 @@ def test_download_and_save_page_success(mock_upload, mock_requests_get):
 
     mock_requests_get.assert_called_once_with("https://www.ejemplo.com")
     mock_upload.assert_called_once()
-    assert result == True
+    assert result is True
